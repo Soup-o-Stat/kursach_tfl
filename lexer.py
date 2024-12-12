@@ -56,26 +56,23 @@ class LexicalAnalyzer:
     def parse_number(self):
         start = self.pos
         base_detected = False
-
-        # Проверка на основание числа
         if self.current_char == '0':
             self.advance()
-            if self.current_char in 'Bb':  # Binary
+            if self.current_char in 'Bb':
                 base_detected = True
                 self.advance()
                 while self.current_char and self.current_char in '01':
                     self.advance()
-            elif self.current_char in 'Oo':  # Octal
+            elif self.current_char in 'Oo':
                 base_detected = True
                 self.advance()
                 while self.current_char and self.current_char in '01234567':
                     self.advance()
-            elif self.current_char in 'Xx':  # Hexadecimal
+            elif self.current_char in 'Xx':
                 base_detected = True
                 self.advance()
                 while self.current_char and (self.current_char.isdigit() or self.current_char.upper() in 'ABCDEF'):
                     self.advance()
-
         if not base_detected:
             while self.current_char and self.current_char.isdigit():
                 self.advance()
