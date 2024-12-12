@@ -1,6 +1,5 @@
 from lexer import LexicalAnalyzer
-
-# from parserr import Parser
+from parserr import Parser
 
 code = [
     '''
@@ -38,22 +37,19 @@ code = [
     '''
 ]
 
-for i in code:
-    print("Лексический анализ")
-    lexer = LexicalAnalyzer(i)
+for i, program in enumerate(code, start=1):
+    print(f"Программа {i}:")
+    print("* Лексический анализ *")
+    lexer = LexicalAnalyzer(program)
     tokens = lexer.tokenize()
-    for j in tokens:
-        print(j)
-    print("Лексический анализ завершен")
-    print()
-    print()
-    # print("Синтаксический анализ")
-    # try:
-    #     parser = Parser(tokens)
-    #     parser.parse_program()
-    #     print("Синтаксический анализ завершен")
-    # except SyntaxError as e:
-    #     print(f"Ошибка синтаксического анализа: {e}")
+    for token in tokens:
+        print(f"Токен: {token[0]}, элемент: {token[1]}")
+    print("* Лексический анализ завершен *")
+    print("* Синтаксический анализ *")
+    try:
+        parser = Parser(tokens)
+        parsed_program = parser.parse_program()
+        print(f"Синтаксический анализ завершен: {parsed_program}")
+    except Exception as e:
+        print(f"Ошибка синтаксического анализа: {e}")
     print("------------------------")
-    print()
-    print()
