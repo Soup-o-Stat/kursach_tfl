@@ -11,6 +11,9 @@ class SyntaxAnalyzer:
             self.current_token = self.tokens.popleft()
             next_token = self.tokens[0] if self.tokens else None
             print(f"Текущий токен: {self.current_token}, следующий токен: {next_token}")
+            if self.current_token[0]=="NUMBER" and next_token[0]=="ID":
+                raise SyntaxError(f"Неожиданный оператор: {self.current_token[1]}{next_token[1]}")
+
         else:
             self.current_token = None
             print("Токены закончились.")

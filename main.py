@@ -24,12 +24,12 @@ code = [
 
     '''
     program
-    var 
+    var
     a, b, c : real;
     begin
-      a := 3;
-      pizda := 2;
-      c := a * b;
+      a := 3.5;
+      b := 2;
+      c := 5;
       if c > 10 then [
         write(c);
       ]

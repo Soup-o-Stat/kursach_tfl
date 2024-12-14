@@ -2,7 +2,6 @@ from enum import Enum
 
 class LexicalAnalyzer:
     class State(Enum):
-        H = "H"  # Начальное состояние
         ID = "ID"  # Идентификаторы
         NUM = "NUM"  # Числа
         COM = "COM"  # Комментарии
@@ -14,7 +13,7 @@ class LexicalAnalyzer:
     # Ключевые слова
     TW = [
         "program", "var", "begin", "end", "if", "else", "while", "for", "to", "then", "next", "as",
-        "readln", "write", "true", "false", "%", "!", "$", "end_else"
+        "readln", "write", "true", "false", "%", "!", "$", "end_else", "real", "integer"
     ]
 
     # Разделители и операторы
